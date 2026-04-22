@@ -22,7 +22,7 @@ jobs:
           tools: composer
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run: composer install --prefer-dist
 
       - name: Run PHP CS Fixer Check
         run: composer check
