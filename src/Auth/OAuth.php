@@ -1,0 +1,127 @@
+<?php
+
+namespace ArielMagbanua\PhpWebflowApi\Auth;
+
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
+use Exception;
+
+/**
+ * OAuth class
+ * 
+ * This class is used to authenticate with the Webflow API using OAuth 2.0.
+ * 
+ * @package ArielMagbanua\PhpWebflowApi\Auth
+ * @author Ariel Magbanua <ariel@arielmagbanua.com>
+ */
+class OAuth
+{
+    /**
+     * The base URL for the Webflow API
+     *
+     * @var string
+     */
+    protected string $apiBaseUrl = 'https://webflow.com';
+
+    /**
+     * The HTTP client
+     *
+     * @var Client
+     */
+    protected Client $httpClient;
+
+    /**
+     * The OAuth constructor
+     *
+     * @param string|null $clientId The client ID
+     * @param string|null $clientSecret The client secret
+     * @param string|null $state The state
+     * @param string|null $redirectUri The redirect URI
+     * @param array|null $scopes The scopes
+     * @param array|null $headers The headers
+     * @return void
+     */
+    public function __construct(
+        protected ?string $clientId = null,
+        protected ?string $clientSecret = null,
+        protected ?string $state = null,
+        protected ?string $redirectUri = null,
+        protected ?array $scopes = null,
+        protected ?array $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+    ) {
+        // configure the HTTP client
+        $this->httpClient = new Client([
+            'base_uri' => $this->apiBaseUrl,
+            'headers' => $this->headers,
+        ]);
+    }
+
+    /**
+     * Get the authorization URL
+     *
+     * @return string
+     */
+    public function getAuthorizationUrl(): string
+    {   
+        // get the base authorize url
+        $url = $this->apiBaseUrl . '/oauth/authorize';
+
+        // authorization params
+        $params = [
+            'client_id' => $this->clientId,
+            'redirect_uri' => $this->redirectUri,
+            'response_type' => 'code',
+            'scope' => implode(' ', $scopes ?? $this->scopes),
+            'state' => $state ?? $this->state,
+        ];
+
+        // build the authorization url
+        return $url . '?' . http_build_query($params);
+    }
+
+    /**
+     * Get the access token
+     *
+     * @param string $code
+     * @return AccessToken
+     */
+    public function getAccessToken(string $code): AccessToken
+    {
+        // create a request
+        $request = new Request(
+            method: 'POST',
+            uri: 'oauth/access_token',
+            body: json_encode([
+                'code' => $code,
+                'client_id' => $this->clientId,
+                'client_secret' => $this->clientSecret,
+                'grant_type' => 'authorization_code',
+            ]),
+        );
+
+        // execute the request
+        $response = $this->httpClient->send($request);
+
+        // check if the response is successful
+        if ($response->getStatusCode() !== 200) {
+            throw new Exception('Failed to get access token: ' . $response->getBody()->getContents());
+        }
+
+        // get the response body
+        $body = $response->getBody();
+
+        // decode the response body
+        $data = json_decode($body, true);
+
+        // return the access token
+        return new AccessToken(
+            accessToken: $data['access_token'],
+            refreshToken: $data['refresh_token'] ?? null,
+            expiresIn: $data['expires_in'] ?? 0,
+            tokenType: $data['token_type'] ?? 'Bearer',
+        );
+    }
+}
