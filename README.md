@@ -1,4 +1,4 @@
-![Tests / Lint](https://github.com/arielmagbanua/php-webflow-api/actions/workflows/backend_lint_tests.yml/badge.svg)
+![Tests / Lint](https://github.com/arielmagbanua/php-webflow-api/actions/workflows/tests.yml/badge.svg)
 
 # php-webflow-api
 
