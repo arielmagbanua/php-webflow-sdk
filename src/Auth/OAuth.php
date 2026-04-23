@@ -76,7 +76,7 @@ class OAuth
             'client_id' => $this->clientId,
             'redirect_uri' => $this->redirectUri,
             'response_type' => 'code',
-            'scope' => implode(' ', $this->scopes),
+            'scope' => implode(' ', $this->scopes ?? []),
             'state' => $this->state,
         ];
 
