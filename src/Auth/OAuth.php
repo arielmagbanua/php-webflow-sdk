@@ -127,7 +127,7 @@ class OAuth
         return new AccessToken(
             accessToken: $data['access_token'],
             scopes: $data['scopes'] ?? [],
-            tokenType: $data['token_type'] ?? 'Bearer',
+            tokenType: ucfirst($data['token_type'] ?? 'Bearer'),
         );
     }
 }
