@@ -77,34 +77,6 @@ class OAuth extends Api
      */
     public function requestAccessToken(string $code): AccessToken
     {
-        /*
-        // create a request
-        $request = new Request(
-            method: 'POST',
-            uri: 'oauth/access_token',
-            body: json_encode([
-                'code' => $code,
-                'client_id' => $this->clientId,
-                'client_secret' => $this->clientSecret,
-                'grant_type' => 'authorization_code',
-            ]),
-        );
-
-        // execute the request
-        $response = $this->httpClient->send($request);
-
-        // get the response body contents
-        $contents = $response->getBody()->getContents();
-
-        // check if the response is successful
-        if ($response->getStatusCode() !== 200) {
-            throw new Exception('Failed to get access token: ' . $contents);
-        }
-
-        // decode the response body
-        $data = json_decode($contents, true);
-        */
-
         $data = $this->sendRequest(
             method: 'POST',
             uri: 'oauth/access_token',

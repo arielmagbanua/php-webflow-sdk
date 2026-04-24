@@ -32,7 +32,7 @@ abstract class DataApi extends Api
         protected string $version,
     ) {
         // set the whole base URL with the API version
-        $this->apiBaseUrl = $this->apiBaseUrl . '/' . $this->version;
+        $this->apiBaseUrl = $this->apiBaseUrl . '/' . $this->version . '/';
 
         // set the headers
         $this->headers = array_merge($this->headers, [
