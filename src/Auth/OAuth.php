@@ -25,7 +25,6 @@ class OAuth extends Api
      * @param string|null $state The state
      * @param string|null $redirectUri The redirect URI
      * @param array|null $scopes The scopes
-     * @param array|null $headers The headers
      * @return void
      */
     public function __construct(
