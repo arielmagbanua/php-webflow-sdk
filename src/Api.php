@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace ArielMagbanua\PhpWebflowApi;
 
-use Exception;
 use GuzzleHttp\Client;
 
 /**
@@ -66,11 +65,7 @@ abstract class Api
         // get the response body contents
         $contents = $response->getBody()->getContents();
 
-        // check if the response is successful
-        if ($response->getStatusCode() !== 200) {
-            throw new Exception('Failed to send request: ' . $contents);
-        }
-
+        // decode the response body
         return json_decode($contents, true);
     }
 }
