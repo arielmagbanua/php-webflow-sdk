@@ -6,7 +6,6 @@ namespace ArielMagbanua\PhpWebflowApi;
 
 use Exception;
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
 
 /**
  * The API class for the Webflow API
@@ -54,13 +53,15 @@ abstract class Api
             return null; // configured client
         }
 
-        $request = new Request(
-            method: $method,
-            uri: $uri,
-            body: json_encode($body),
-        );
+        $requestOptions = [
+            'connect_timeout' => 10,
+        ];
 
-        $response = $this->httpClient->send($request);
+        if ($body) {
+            $requestOptions['body'] = json_encode($body);
+        }
+
+        $response = $this->httpClient->request($method, $uri, $requestOptions);
 
         // get the response body contents
         $contents = $response->getBody()->getContents();
