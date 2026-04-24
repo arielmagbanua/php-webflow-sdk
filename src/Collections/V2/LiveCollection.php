@@ -25,7 +25,7 @@ class LiveCollection extends LiveItems
         string $accessToken,
         protected string $collectionId,
     ) {
-        parent::__construct(accessToken: $accessToken, apiVersion: 'v2');
+        parent::__construct(accessToken: $accessToken, version: 'v2');
     }
 
     /**
