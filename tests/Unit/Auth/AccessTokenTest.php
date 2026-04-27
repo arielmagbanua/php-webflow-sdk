@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\Tests\Auth;
+namespace ArielMagbanua\PhpWebflowApi\Tests\Unit\Auth;
 
 use ArielMagbanua\PhpWebflowApi\Auth\AccessToken;
 use PHPUnit\Framework\TestCase;
