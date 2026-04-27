@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace ArielMagbanua\PhpWebflowApi\Collections\V2;
 
-use ArielMagbanua\PhpWebflowApi\Collections\Contracts\LiveItems;
+use ArielMagbanua\PhpWebflowApi\Collections\Contracts\StagedItems;
 
 /**
- * The Live Collection class for the Webflow API
+ * The Staged Collection class for the Webflow API
  *
  * @package ArielMagbanua\PhpWebflowApi\Collections\V2
  * @author Ariel Magbanua <ariel@arielmagbanua.com>
  * @todo create unit tests for this class
  */
-class LiveCollection extends LiveItems
+class StagedCollection extends StagedItems
 {
     /**
-     * The Live Collection constructor
-     *
-     * @param string $accessToken The access token
-     * @param string $collectionId The collection ID
-     */
+       * The Live Collection constructor
+       *
+       * @param string $accessToken The access token
+       * @param string $collectionId The collection ID
+       */
     public function __construct(
         string $accessToken,
         protected string $collectionId,
@@ -29,21 +29,16 @@ class LiveCollection extends LiveItems
     }
 
     /**
-     * List the live items
+     * List the items
      *
      * @param string|null $cmsLocaleId The CMS locale ID
      * @param int|null $offset The offset
      * @param int|null $limit The limit
      * @param string|null $name The name
      * @param string|null $slug The slug
-     * @param array|null $createdOn The created on
-     * @param array|null $lastPublished The last published
-     * @param array|null $lastUpdated The last updated
-     * @param string|null $sortBy The sort by
-     * @param string|null $sortOrder The sort order
      * @return array|null
      */
-    public function listLiveItems(
+    public function listItems(
         ?string $cmsLocaleId = null,
         ?int $offset = null,
         ?int $limit = null,
@@ -79,13 +74,13 @@ class LiveCollection extends LiveItems
     }
 
     /**
-     * Get a live item
+     * Get an item
      *
-     * @param string $id The ID of the live item
+     * @param string $id The ID of the item
      * @param string|null $cmsLocaleId The CMS locale ID
      * @return array|null
      */
-    public function getLiveItem(string $id, ?string $cmsLocaleId = null): ?array
+    public function getItem(string $id, ?string $cmsLocaleId = null): ?array
     {
         // create the uri for the request
         $uri = 'collections/' . $this->collectionId . "/items/$id/" . $this->type;
@@ -104,16 +99,16 @@ class LiveCollection extends LiveItems
     }
 
     /**
-     * Create the live items
+     * Create the items
      *
      * @param array $items The items to create
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
      * @return array|null
      */
-    public function createLiveItems(array $items, ?bool $skipInvalidFiles = null): ?array
+    public function createItems(array $items, ?bool $skipInvalidFiles = null): ?array
     {
         // create the uri for the request
-        $uri = 'collections/' . $this->collectionId . '/items/' . $this->type;
+        $uri = 'collections/' . $this->collectionId . '/items/' . $this->type . '/bulk';
 
         // append the arguments as query parameters
         // but only set the parameters that are not null
@@ -132,13 +127,13 @@ class LiveCollection extends LiveItems
     }
 
     /**
-     * Update the live items
+     * Update the items
      *
      * @param array $items The items to update
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
      * @return array|null
      */
-    public function updateLiveItems(array $items, ?bool $skipInvalidFiles = null): ?array
+    public function updateItems(array $items, ?bool $skipInvalidFiles = null): ?array
     {
         // create the uri for the request
         $uri = 'collections/' . $this->collectionId . '/items/' . $this->type;
@@ -160,7 +155,7 @@ class LiveCollection extends LiveItems
     }
 
     /**
-     * Unpublish the live items
+     * Delete the items
      *
      * Example $items structure:
      * ```php
@@ -171,10 +166,10 @@ class LiveCollection extends LiveItems
      *      ]
      * ]
      * ```
-     * @param array $items The items to unpublish
+     * @param array $items The items to delete
      * @return array|null
      */
-    public function unpublishLiveItems(array $items): ?array
+    public function deleteItems(array $items): ?array
     {
         // create the uri for the request
         $uri = 'collections/' . $this->collectionId . '/items/' . $this->type;
@@ -185,6 +180,31 @@ class LiveCollection extends LiveItems
             uri: $uri,
             body: [
                 'items' => $items,
+            ],
+        );
+    }
+
+    /**
+     * Publish the items
+     *
+     * Example $ids structure:
+     * ```php
+     * $ids = ['580e64008c9a982ac9b8b754', '580e64008c9a982ac9b8b755'];
+     * ```
+     * @param array $ids The IDs of the items to publish
+     * @return array|null
+     */
+    public function publishItemIds(array $ids): ?array
+    {
+        // create the uri for the request
+        $uri = 'collections/' . $this->collectionId . '/items/publish';
+
+        // send the request
+        return $this->sendRequest(
+            method: 'POST',
+            uri: $uri,
+            body: [
+                'items' => $ids,
             ],
         );
     }
