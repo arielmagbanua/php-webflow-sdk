@@ -39,6 +39,20 @@ abstract class Api
     ];
 
     /**
+     * The API constructor
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // set the HTTP client
+        $this->setHttpClient(new Client([
+            'base_uri' => $this->apiBaseUrl,
+            'headers' => $this->headers,
+        ]));
+    }
+
+    /**
      * Set the HTTP client
      *
      * @param Client $httpClient The HTTP client

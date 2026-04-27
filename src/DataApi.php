@@ -39,10 +39,7 @@ abstract class DataApi extends Api
             'Authorization' => 'Bearer ' . $this->accessToken,
         ]);
 
-        // set the HTTP client
-        $this->setHttpClient(new Client([
-            'base_uri' => $this->apiBaseUrl,
-            'headers' => $this->headers,
-        ]));
+        // call the parent constructor
+        parent::__construct();
     }
 }

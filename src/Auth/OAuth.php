@@ -34,11 +34,8 @@ class OAuth extends Api
         protected ?string $redirectUri = null,
         protected ?array $scopes = null,
     ) {
-        // configure the HTTP client
-        $this->httpClient = new Client([
-            'base_uri' => $this->apiBaseUrl,
-            'headers' => $this->headers,
-        ]);
+        // call the parent constructor
+        parent::__construct();
     }
 
     /**
