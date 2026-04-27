@@ -43,7 +43,7 @@ class LiveCollection extends LiveItems
      * @param string|null $sortOrder The sort order
      * @return array|null
      */
-    public function listLiveItems(
+    public function listItems(
         ?string $cmsLocaleId = null,
         ?int $offset = null,
         ?int $limit = null,
@@ -85,7 +85,7 @@ class LiveCollection extends LiveItems
      * @param string|null $cmsLocaleId The CMS locale ID
      * @return array|null
      */
-    public function getLiveItem(string $id, ?string $cmsLocaleId = null): ?array
+    public function getItem(string $id, ?string $cmsLocaleId = null): ?array
     {
         // create the uri for the request
         $uri = 'collections/' . $this->collectionId . "/items/$id/" . $this->type;
@@ -110,7 +110,7 @@ class LiveCollection extends LiveItems
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
      * @return array|null
      */
-    public function createLiveItems(array $items, ?bool $skipInvalidFiles = null): ?array
+    public function createItems(array $items, ?bool $skipInvalidFiles = null): ?array
     {
         // create the uri for the request
         $uri = 'collections/' . $this->collectionId . '/items/' . $this->type;
@@ -138,7 +138,7 @@ class LiveCollection extends LiveItems
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
      * @return array|null
      */
-    public function updateLiveItems(array $items, ?bool $skipInvalidFiles = null): ?array
+    public function updateItems(array $items, ?bool $skipInvalidFiles = null): ?array
     {
         // create the uri for the request
         $uri = 'collections/' . $this->collectionId . '/items/' . $this->type;
@@ -174,7 +174,7 @@ class LiveCollection extends LiveItems
      * @param array $items The items to unpublish
      * @return array|null
      */
-    public function unpublishLiveItems(array $items): ?array
+    public function unpublishItems(array $items): ?array
     {
         // create the uri for the request
         $uri = 'collections/' . $this->collectionId . '/items/' . $this->type;

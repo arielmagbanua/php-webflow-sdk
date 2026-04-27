@@ -36,7 +36,7 @@ abstract class LiveItems extends DataApi
      * @param string|null $sortOrder The sort order
      * @return array|null
      */
-    abstract public function listLiveItems(
+    abstract public function listItems(
         ?string $cmsLocaleId = null,
         ?int $offset = null,
         ?int $limit = null,
@@ -56,7 +56,7 @@ abstract class LiveItems extends DataApi
      * @param string|null $cmsLocaleId The CMS locale ID
      * @return array|null
      */
-    abstract public function getLiveItem(string $id, ?string $cmsLocaleId = null): ?array;
+    abstract public function getItem(string $id, ?string $cmsLocaleId = null): ?array;
 
     /**
      * Create the live items
@@ -65,7 +65,7 @@ abstract class LiveItems extends DataApi
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
      * @return array|null
      */
-    abstract public function createLiveItems(array $items, ?bool $skipInvalidFiles = null): ?array;
+    abstract public function createItems(array $items, ?bool $skipInvalidFiles = null): ?array;
 
     /**
      * Update the live items
@@ -74,7 +74,7 @@ abstract class LiveItems extends DataApi
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
      * @return array|null
      */
-    abstract public function updateLiveItems(array $items, ?bool $skipInvalidFiles = null): ?array;
+    abstract public function updateItems(array $items, ?bool $skipInvalidFiles = null): ?array;
 
     /**
      * Unpublish the live items
@@ -82,5 +82,5 @@ abstract class LiveItems extends DataApi
      * @param array $ids The IDs of the live items to unpublish
      * @return array|null
      */
-    abstract public function unpublishLiveItems(array $ids): ?array;
+    abstract public function unpublishItems(array $ids): ?array;
 }
