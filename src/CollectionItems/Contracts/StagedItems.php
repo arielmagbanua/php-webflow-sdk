@@ -2,23 +2,18 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\Collections\Contracts;
+namespace ArielMagbanua\PhpWebflowApi\CollectionItems\Contracts;
 
-use ArielMagbanua\PhpWebflowApi\Collections\Collection as WebflowCollection;
+use ArielMagbanua\PhpWebflowApi\CollectionItems\Contracts\Collection as WebflowCollection;
 
 /**
- * The Live Items contract for the Webflow API
+ * The Staged Items contract for the Webflow API
  *
  * @package ArielMagbanua\PhpWebflowApi\Collections\Contracts
  * @author Ariel Magbanua <ariel@arielmagbanua.com>
  */
-abstract class LiveItems extends WebflowCollection
+abstract class StagedItems extends WebflowCollection
 {
-    /**
-     * The resource type. Can be 'live' or ''
-     */
-    protected string $type = 'live';
-
     /**
      * List the live items
      *
@@ -75,5 +70,12 @@ abstract class LiveItems extends WebflowCollection
      *
      * @param array $ids The IDs of the live items to unpublish
      */
-    abstract public function unpublishItems(array $ids): ?array;
+    abstract public function deleteItems(array $ids): ?array;
+
+    /**
+     * Publish the live items
+     *
+     * @param array $ids The IDs of the live items to publish
+     */
+    abstract public function publishItemIds(array $ids): ?array;
 }

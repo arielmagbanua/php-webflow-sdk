@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\Collections\v2;
+namespace ArielMagbanua\PhpWebflowApi\v2\CollectionItems;
 
-use ArielMagbanua\PhpWebflowApi\Collections\Contracts\StagedItems;
+use ArielMagbanua\PhpWebflowApi\CollectionItems\Contracts\StagedItems;
 
 /**
  * The Staged Collection class for the Webflow API
