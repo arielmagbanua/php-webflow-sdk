@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\v2\CollectionItems;
+namespace ArielMagbanua\PhpWebflowApi\Versions\v2\CollectionItems;
 
-use ArielMagbanua\PhpWebflowApi\CollectionItems\Contracts\StagedItems;
+use ArielMagbanua\PhpWebflowApi\CollectionItems\Contracts\LiveItems;
 
 /**
- * The Staged Collection class for the Webflow API
+ * The Live Collection class for the Webflow API
  *
  * @package ArielMagbanua\PhpWebflowApi\Collections\V2
  * @author Ariel Magbanua <ariel@arielmagbanua.com>
  * @todo create unit tests for this class
  */
-class StagedCollection extends StagedItems
+class LiveCollection extends LiveItems
 {
     /**
-     * The Staged Collection constructor
+     * The Live Collection constructor
      *
      * @param string $accessToken The access token
      * @param string $collectionId The collection ID
@@ -28,7 +28,7 @@ class StagedCollection extends StagedItems
     }
 
     /**
-     * List the items
+     * List the live items
      *
      * @param string|null $cmsLocaleId The CMS locale ID
      * @param int|null $offset The offset
@@ -77,9 +77,9 @@ class StagedCollection extends StagedItems
     }
 
     /**
-     * Get an item
+     * Get a live item
      *
-     * @param string $id The ID of the item
+     * @param string $id The ID of the live item
      * @param string|null $cmsLocaleId The CMS locale ID
      */
     public function getItem(string $id, ?string $cmsLocaleId = null): ?array
@@ -101,7 +101,7 @@ class StagedCollection extends StagedItems
     }
 
     /**
-     * Create the items
+     * Create the live items
      *
      * @param array $items The items to create
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
@@ -109,7 +109,7 @@ class StagedCollection extends StagedItems
     public function createItems(array $items, ?bool $skipInvalidFiles = null): ?array
     {
         // create the uri for the request
-        $uri = 'collections/' . $this->collectionId . '/items/' . $this->type . '/bulk';
+        $uri = 'collections/' . $this->collectionId . '/items/' . $this->type;
 
         // append the arguments as query parameters
         // but only set the parameters that are not null
@@ -128,7 +128,7 @@ class StagedCollection extends StagedItems
     }
 
     /**
-     * Update the items
+     * Update the live items
      *
      * @param array $items The items to update
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
@@ -155,7 +155,7 @@ class StagedCollection extends StagedItems
     }
 
     /**
-     * Delete the items
+     * Unpublish the live items
      *
      * Example $items structure:
      * ```php
@@ -166,9 +166,9 @@ class StagedCollection extends StagedItems
      *      ]
      * ]
      * ```
-     * @param array $items The items to delete
+     * @param array $items The items to unpublish
      */
-    public function deleteItems(array $items): ?array
+    public function unpublishItems(array $items): ?array
     {
         // create the uri for the request
         $uri = 'collections/' . $this->collectionId . '/items/' . $this->type;
@@ -179,30 +179,6 @@ class StagedCollection extends StagedItems
             uri: $uri,
             body: [
                 'items' => $items,
-            ],
-        );
-    }
-
-    /**
-     * Publish the items
-     *
-     * Example $ids structure:
-     * ```php
-     * $ids = ['580e64008c9a982ac9b8b754', '580e64008c9a982ac9b8b755'];
-     * ```
-     * @param array $ids The IDs of the items to publish
-     */
-    public function publishItemIds(array $ids): ?array
-    {
-        // create the uri for the request
-        $uri = 'collections/' . $this->collectionId . '/items/publish';
-
-        // send the request
-        return $this->sendRequest(
-            method: 'POST',
-            uri: $uri,
-            body: [
-                'items' => $ids,
             ],
         );
     }
