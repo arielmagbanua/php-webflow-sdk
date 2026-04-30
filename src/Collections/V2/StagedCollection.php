@@ -16,15 +16,15 @@ use ArielMagbanua\PhpWebflowApi\Collections\Contracts\StagedItems;
 class StagedCollection extends StagedItems
 {
     /**
-       * The Live Collection constructor
-       *
-       * @param string $accessToken The access token
-       * @param string $collectionId The collection ID
-       */
-    public function __construct(string $accessToken, protected string $collectionId)
+     * The Staged Collection constructor
+     *
+     * @param string $accessToken The access token
+     * @param string $collectionId The collection ID
+     */
+    public function __construct(string $accessToken, string $collectionId)
     {
         // call the parent constructor
-        parent::__construct(accessToken: $accessToken, version: 'v2');
+        parent::__construct(accessToken: $accessToken, version: 'v2', collectionId: $collectionId);
     }
 
     /**

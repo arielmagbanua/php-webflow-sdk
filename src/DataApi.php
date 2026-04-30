@@ -13,13 +13,6 @@ namespace ArielMagbanua\PhpWebflowApi;
 abstract class DataApi extends Api
 {
     /**
-     * The resource type. Can be 'live' or ''
-     *
-     * @var string
-     */
-    protected string $type = '';
-
-    /**
      * The Data API constructor
      *
      * @param string $accessToken The access token

@@ -21,10 +21,10 @@ class LiveCollection extends LiveItems
      * @param string $accessToken The access token
      * @param string $collectionId The collection ID
      */
-    public function __construct(string $accessToken, protected string $collectionId)
+    public function __construct(string $accessToken, string $collectionId)
     {
         // call the parent constructor
-        parent::__construct(accessToken: $accessToken, version: 'v2');
+        parent::__construct(accessToken: $accessToken, version: 'v2', collectionId: $collectionId);
     }
 
     /**
