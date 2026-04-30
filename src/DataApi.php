@@ -31,4 +31,28 @@ abstract class DataApi extends Api
         // call the parent constructor
         parent::__construct();
     }
+
+    /**
+     * Set the access token
+     *
+     * @param string $accessToken The access token
+     */
+    public function setAccessToken(string $accessToken): self
+    {
+        $this->accessToken = $accessToken;
+
+        return $this;
+    }
+
+    /**
+     * Set the API version
+     *
+     * @param string $version The version
+     */
+    public function setVersion(string $version): self
+    {
+        $this->version = $version;
+
+        return $this;
+    }
 }

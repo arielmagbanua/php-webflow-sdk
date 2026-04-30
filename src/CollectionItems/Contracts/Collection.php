@@ -30,10 +30,22 @@ abstract class Collection extends DataApi
      */
     public function __construct(
         string $accessToken,
-        protected string $version,
+        string $version,
         protected string $collectionId,
     ) {
         // call the parent constructor
         parent::__construct(accessToken: $accessToken, version: $version);
+    }
+
+    /**
+     * Set the collection ID
+     *
+     * @param string $collectionId The collection ID
+     */
+    public function setCollectionId(string $collectionId): self
+    {
+        $this->collectionId = $collectionId;
+
+        return $this;
     }
 }
