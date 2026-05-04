@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\DataApi\Auth;
+namespace ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Auth;
 
 use ArielMagbanua\PhpWebflowApi\BaseApi;
 

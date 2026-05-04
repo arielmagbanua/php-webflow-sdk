@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\Tests\Unit\Auth;
+namespace ArielMagbanua\PhpWebflowApi\Tests\Unit\Versions\V2\Auth;
 
-use ArielMagbanua\PhpWebflowApi\DataApi\Auth\AccessToken;
-use ArielMagbanua\PhpWebflowApi\DataApi\Auth\OAuth;
+use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Auth\AccessToken;
+use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Auth\OAuth;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
