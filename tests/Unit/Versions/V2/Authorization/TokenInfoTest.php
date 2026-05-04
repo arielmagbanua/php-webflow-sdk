@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace ArielMagbanua\PhpWebflowApi\Tests\Unit\Versions\V2\Authorization;
 
-use ArielMagbanua\PhpWebflowApi\Versions\V2\Authorization\Token;
+use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Authorization\Token;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;

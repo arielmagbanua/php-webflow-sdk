@@ -2,9 +2,9 @@ name: Tests / Lint
 
 on:
   push:
-    branches: [main, dev]
+    branches: [main, dev, v0.2.x-dev]
   pull_request:
-    branches: [main, dev]
+    branches: [main, dev, v0.2.x-dev]
   workflow_dispatch:
 
 jobs:

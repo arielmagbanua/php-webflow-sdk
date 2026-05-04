@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\Auth;
+namespace ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Auth;
 
-use ArielMagbanua\PhpWebflowApi\Api;
+use ArielMagbanua\PhpWebflowApi\BaseApi;
 
 /**
  * OAuth class
@@ -14,7 +14,7 @@ use ArielMagbanua\PhpWebflowApi\Api;
  * @package ArielMagbanua\PhpWebflowApi\Auth
  * @author Ariel Magbanua <ariel@arielmagbanua.com>
  */
-class OAuth extends Api
+class OAuth extends BaseApi
 {
     /**
      * The OAuth constructor
