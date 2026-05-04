@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\CollectionItems\Contracts;
+namespace ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts;
 
-use ArielMagbanua\PhpWebflowApi\DataApi;
+use ArielMagbanua\PhpWebflowApi\DataApi\Api;
 
 /**
  * The Collection class for the Webflow API
@@ -12,7 +12,7 @@ use ArielMagbanua\PhpWebflowApi\DataApi;
  * @package ArielMagbanua\PhpWebflowApi\Collections
  * @author Ariel Magbanua <ariel@arielmagbanua.com>
  */
-abstract class Collection extends DataApi
+abstract class Collection extends Api
 {
     /**
      * The resource type. Can be 'live' or ''

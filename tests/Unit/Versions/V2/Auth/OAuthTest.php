@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\Tests\Unit\Auth;
+namespace ArielMagbanua\PhpWebflowApi\Tests\Unit\Versions\V2\Auth;
 
-use ArielMagbanua\PhpWebflowApi\Auth\AccessToken;
-use ArielMagbanua\PhpWebflowApi\Auth\OAuth;
+use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Auth\AccessToken;
+use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Auth\OAuth;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -73,8 +73,8 @@ class OAuthTest extends TestCase
 
     public function testRequestAccessToken(): void
     {
-        $requestPayload = json_decode(file_get_contents(__DIR__ . '/../../payloads/getAccessTokenRequestPayload.json'), true);
-        $responsePayload = json_decode(file_get_contents(__DIR__ . '/../../payloads/requestAccessTokenResponsePayload.json'), true);
+        $requestPayload = json_decode(file_get_contents(__DIR__ . '/../../../../payloads/requestAccessTokenRequestPayload.json'), true);
+        $responsePayload = json_decode(file_get_contents(__DIR__ . '/../../../../payloads/requestAccessTokenResponsePayload.json'), true);
 
         $container = [];
         $history = Middleware::history($container);

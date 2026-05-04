@@ -12,7 +12,7 @@ use GuzzleHttp\Client;
  * @package ArielMagbanua\PhpWebflowApi
  * @author Ariel Magbanua <ariel@arielmagbanua.com>
  */
-abstract class Api
+abstract class BaseApi
 {
     /**
      * The base URL for the Webflow API

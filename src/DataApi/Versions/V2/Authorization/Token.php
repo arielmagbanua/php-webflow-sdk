@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\Versions\V2\Authorization;
+namespace ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Authorization;
 
-use ArielMagbanua\PhpWebflowApi\DataApi;
+use ArielMagbanua\PhpWebflowApi\DataApi\Api;
 
 /**
  * The Token class for the Webflow API
@@ -13,7 +13,7 @@ use ArielMagbanua\PhpWebflowApi\DataApi;
  * @author Ariel Magbanua <ariel@arielmagbanua.com>
  * @todo create unit tests for this class
  */
-class Token extends DataApi
+class Token extends Api
 {
     /**
      * The Token constructor

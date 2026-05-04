@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\CollectionItems\Contracts;
+namespace ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts;
 
-use ArielMagbanua\PhpWebflowApi\CollectionItems\Contracts\Collection as WebflowCollection;
+use ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts\Collection as WebflowCollection;
 
 /**
  * The Live Items contract for the Webflow API

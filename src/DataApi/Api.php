@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi;
+namespace ArielMagbanua\PhpWebflowApi\DataApi;
+
+use ArielMagbanua\PhpWebflowApi\BaseApi;
 
 /**
  * The Base Data API class for the Webflow API
@@ -10,7 +12,7 @@ namespace ArielMagbanua\PhpWebflowApi;
  * @package ArielMagbanua\PhpWebflowApi
  * @author Ariel Magbanua <ariel@arielmagbanua.com>
  */
-abstract class DataApi extends Api
+abstract class Api extends BaseApi
 {
     /**
      * The Data API constructor
