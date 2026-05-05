@@ -34,7 +34,7 @@ class TokenInfoTest extends TestCase
         $token->setHttpClient($client);
 
         // Call the method and assert the result
-        $result = $token->getUserInfo();
+        $result = $token->getAuthorizationUserInfo();
         $this->assertSame($payload, $result);
     }
 
@@ -59,7 +59,7 @@ class TokenInfoTest extends TestCase
         $token->setHttpClient($client);
 
         // Call the method and assert the result
-        $result = $token->getInfo();
+        $result = $token->getAuthorizationInfo();
         $this->assertSame($payload, $result);
     }
 }

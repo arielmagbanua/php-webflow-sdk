@@ -25,9 +25,11 @@ class TokenInfo extends Api
     }
 
     /**
-     * Information about the Authorized User
+     * Information about the Authorized User.
+     *
+     * @link https://developers.webflow.com/data/v2.0.0/reference/token/authorized-by
      */
-    public function getUserInfo(): ?array
+    public function getAuthorizationUserInfo(): ?array
     {
         return $this->sendRequest(
             method: 'GET',
@@ -36,9 +38,11 @@ class TokenInfo extends Api
     }
 
     /**
-     * Information about the authorization token
+     * Information about the authorization token.
+     *
+     * @link https://developers.webflow.com/data/v2.0.0/reference/token/introspect
      */
-    public function getInfo(): ?array
+    public function getAuthorizationInfo(): ?array
     {
         return $this->sendRequest(
             method: 'GET',
