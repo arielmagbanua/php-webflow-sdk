@@ -9,7 +9,7 @@
   ],
   "homepage": "https://github.com/arielmagbanua/php-webflow-api",
   "require": {
-    "php": "^8.1",
+    "php": ">=8.1",
     "guzzlehttp/guzzle": "^7.10"
   },
   "require-dev": {
