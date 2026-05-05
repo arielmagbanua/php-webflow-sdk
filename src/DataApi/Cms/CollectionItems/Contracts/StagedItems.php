@@ -14,7 +14,7 @@ use ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts\Collection
 abstract class StagedItems extends WebflowCollection
 {
     /**
-     * List the live items
+     * List of all Items within a Collection.
      *
      * @param string|null $cmsLocaleId The CMS locale ID
      * @param int|null $offset The offset
@@ -41,7 +41,7 @@ abstract class StagedItems extends WebflowCollection
     ): ?array;
 
     /**
-     * Get a live item
+     * Get details of a selected Collection Item.
      *
      * @param string $id The ID of the live item
      * @param string|null $cmsLocaleId The CMS locale ID
@@ -57,7 +57,7 @@ abstract class StagedItems extends WebflowCollection
     abstract public function getItemBySlug(string $slug, ?string $cmsLocaleId = null): ?array;
 
     /**
-     * Create the live items
+     * Create an item or multiple items in a CMS Collection across multiple corresponding locales.
      *
      * @param array $items The items to create
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
@@ -65,7 +65,7 @@ abstract class StagedItems extends WebflowCollection
     abstract public function createItems(array $items, ?bool $skipInvalidFiles = null): ?array;
 
     /**
-     * Update the live items
+     * Update a single item or multiple items in a Collection.
      *
      * @param array $items The items to update
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
@@ -73,14 +73,14 @@ abstract class StagedItems extends WebflowCollection
     abstract public function updateItems(array $items, ?bool $skipInvalidFiles = null): ?array;
 
     /**
-     * Unpublish the live items
+     * Delete Items from a Collection.
      *
      * @param array $ids The IDs of the live items to unpublish
      */
     abstract public function deleteItems(array $ids): ?array;
 
     /**
-     * Publish the live items
+     * Publish an item or multiple items.
      *
      * @param array $ids The IDs of the live items to publish
      */

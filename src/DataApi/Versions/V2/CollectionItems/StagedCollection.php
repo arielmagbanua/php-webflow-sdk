@@ -27,7 +27,9 @@ class StagedCollection extends StagedItems
     }
 
     /**
-     * List the items
+     * List of all Items within a Collection.
+     *
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/staged-items/list-items
      *
      * @param string|null $cmsLocaleId The CMS locale ID
      * @param int|null $offset The offset
@@ -76,7 +78,9 @@ class StagedCollection extends StagedItems
     }
 
     /**
-     * Get an item
+     * Get details of a selected Collection Item.
+     *
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/staged-items/get-item
      *
      * @param string $id The ID of the item
      * @param string|null $cmsLocaleId The CMS locale ID
@@ -126,7 +130,9 @@ class StagedCollection extends StagedItems
     }
 
     /**
-     * Create the items
+     * Create an item or multiple items in a CMS Collection across multiple corresponding locales.
+     *
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/staged-items/create-items
      *
      * @param array $items The items to create
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
@@ -153,7 +159,9 @@ class StagedCollection extends StagedItems
     }
 
     /**
-     * Update the items
+     *  Update a single item or multiple items in a Collection.
+     *
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/staged-items/update-items
      *
      * @param array $items The items to update
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
@@ -180,7 +188,9 @@ class StagedCollection extends StagedItems
     }
 
     /**
-     * Delete the items
+     * Delete Items from a Collection.
+     *
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/staged-items/delete-items
      *
      * Example $items structure:
      * ```php
@@ -209,7 +219,9 @@ class StagedCollection extends StagedItems
     }
 
     /**
-     * Publish the items
+     * Publish an item or multiple items.
+     *
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/staged-items/publish-item
      *
      * Example $ids structure:
      * ```php
