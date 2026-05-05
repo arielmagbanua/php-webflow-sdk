@@ -1,4 +1,4 @@
-# Project: php-webflow-api
+# Project: php-webflow-sdk
 
 PHP SDK for the Webflow Data API.
 
@@ -14,10 +14,9 @@ This project provides a structured and type-safe PHP interface for interacting w
 - **Coding Standard:** PHP-CS-Fixer (^3.95)
 
 ### Architecture
-- `ArielMagbanua\PhpWebflowApi\Api`: Abstract base class that manages the Guzzle HTTP client and basic request handling.
-- `ArielMagbanua\PhpWebflowApi\DataApi`: Extends `Api` to handle authentication (Bearer token) and versioning prefixes for API requests.
-- `ArielMagbanua\PhpWebflowApi\Versions\V2`: Contains the V2 implementation of various Webflow API endpoints (e.g., Authorization, CollectionItems, Sites).
-- `ArielMagbanua\PhpWebflowApi\Auth`: Contains classes for OAuth and Access Token management.
+- `ArielMagbanua\PhpWebflowApi\BaseApi`: Abstract base class that manages the Guzzle HTTP client and basic request handling.
+- `ArielMagbanua\PhpWebflowApi\DataApi\Api`: Extends `BaseApi` to handle authentication (Bearer token) and versioning prefixes for Data API requests.
+- `ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2`: Contains the V2 implementation of various Webflow API endpoints (e.g., Authentication, CollectionItems, Sites).
 
 ## Building and Running
 
@@ -40,6 +39,5 @@ This project provides a structured and type-safe PHP interface for interacting w
 - **Coding Style:** Follows PSR-12 (enforced by PHP-CS-Fixer).
 - **Testing:** 
     - Unit tests are located in `tests/Unit`.
-    - Feature tests are located in `tests/Feature`.
     - Payload mocks for testing are stored in `tests/payloads/`.
-- **Extending the SDK:** To add new API endpoints, create a new class in the appropriate `Versions/{Version}/{Module}` directory that extends `DataApi`.
+- **Extending the SDK:** To add new API endpoints, create a new class in the appropriate `src/DataApi/Versions/{Version}/{Module}` directory that extends `DataApi\Api`.
