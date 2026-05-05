@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\CollectionItems;
 
-use ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts\StagedItems;
+use ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts\StagedItems as StagedItemsContract;
 
 /**
  * The Staged Collection class for the Webflow API
@@ -12,7 +12,7 @@ use ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts\StagedItem
  * @package ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\CollectionItems
  * @todo create unit tests for this class
  */
-class StagedCollection extends StagedItems
+class StagedCollection extends StagedItemsContract
 {
     /**
      * The Staged Collection constructor

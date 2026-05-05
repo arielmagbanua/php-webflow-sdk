@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\CollectionItems;
 
-use ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts\LiveItems;
+use ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts\LiveItems as LiveItemsContract;
 
 /**
  * The Live Collection class for the Webflow API
@@ -12,7 +12,7 @@ use ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts\LiveItems;
  * @package ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\CollectionItems
  * @todo create unit tests for this class
  */
-class LiveCollection extends LiveItems
+class LiveCollection extends LiveItemsContract
 {
     /**
      * The Live Collection constructor
