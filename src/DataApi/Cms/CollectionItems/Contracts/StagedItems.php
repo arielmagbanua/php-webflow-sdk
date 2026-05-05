@@ -43,15 +43,15 @@ abstract class StagedItems extends Items
     /**
      * Get details of a selected Collection Item.
      *
-     * @param string $id The ID of the live item
+     * @param string $id The ID of the staged item
      * @param string|null $cmsLocaleId The CMS locale ID
      */
     abstract public function getItem(string $id, ?string $cmsLocaleId = null): ?array;
 
     /**
-     * Get a live item by slug
+     * Get a staged item by slug
      *
-     * @param string $slug The slug of the live item
+     * @param string $slug The slug of the staged item
      * @param string|null $cmsLocaleId The CMS locale ID
      */
     abstract public function getItemBySlug(string $slug, ?string $cmsLocaleId = null): ?array;
@@ -75,14 +75,14 @@ abstract class StagedItems extends Items
     /**
      * Delete Items from a Collection.
      *
-     * @param array $ids The IDs of the live items to delete
+     * @param array $ids The IDs of the staged items to delete
      */
     abstract public function deleteItems(array $ids): ?array;
 
     /**
      * Publish an item or multiple items.
      *
-     * @param array $ids The IDs of the live items to publish
+     * @param array $ids The IDs of the staged items to publish
      */
     abstract public function publishItemIds(array $ids): ?array;
 }
