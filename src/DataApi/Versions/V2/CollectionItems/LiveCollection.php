@@ -27,7 +27,7 @@ class LiveCollection extends LiveItems
     }
 
     /**
-     * List the live items
+     * List all published items in a collection.
      *
      * @param string|null $cmsLocaleId The CMS locale ID
      * @param int|null $offset The offset
@@ -76,7 +76,9 @@ class LiveCollection extends LiveItems
     }
 
     /**
-     * Get a live item
+     * Get details of a selected Collection live Item.
+     * 
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/live-items/get-item-live
      *
      * @param string $id The ID of the live item
      * @param string|null $cmsLocaleId The CMS locale ID
@@ -100,7 +102,7 @@ class LiveCollection extends LiveItems
     }
 
     /**
-     * Get a live item by slug
+     * Get a live item by slug.
      *
      * @param string $slug The slug of the live item
      * @param string|null $cmsLocaleId The CMS locale ID
@@ -126,7 +128,9 @@ class LiveCollection extends LiveItems
     }
 
     /**
-     * Create the live items
+     * Create item(s) in a collection that will be immediately published to the live site.
+     * 
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/live-items/create-item-live
      *
      * @param array $items The items to create
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
@@ -153,7 +157,9 @@ class LiveCollection extends LiveItems
     }
 
     /**
-     * Update the live items
+     * Update a single published item or multiple published items (up to 100) in a Collection.
+     * 
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/live-items/update-items-live
      *
      * @param array $items The items to update
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
@@ -180,7 +186,9 @@ class LiveCollection extends LiveItems
     }
 
     /**
-     * Unpublish the live items
+     * Unpublish up to 100 items from the live site and set the isDraft property to true.
+     * 
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/live-items/delete-items-live
      *
      * Example $items structure:
      * ```php
