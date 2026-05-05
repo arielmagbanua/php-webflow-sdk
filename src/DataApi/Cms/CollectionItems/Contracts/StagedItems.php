@@ -75,7 +75,7 @@ abstract class StagedItems extends Items
     /**
      * Delete Items from a Collection.
      *
-     * @param array $ids The IDs of the live items to unpublish
+     * @param array $ids The IDs of the live items to delete
      */
     abstract public function deleteItems(array $ids): ?array;
 
