@@ -28,7 +28,7 @@ class LiveItems extends LiveItemsContract
 
     /**
      * List all published items in a collection.
-     * 
+     *
      * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/live-items/list-items-live
      *
      * @param string|null $cmsLocaleId The CMS locale ID
