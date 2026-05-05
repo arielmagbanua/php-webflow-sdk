@@ -58,7 +58,6 @@ class Sites extends SitesContract
      * @link https://developers.webflow.com/data/v2.0.0/reference/sites/get-custom-domain
      *
      * @param string $siteId The site ID
-     * @return array|null
      */
     public function getCustomDomains(string $siteId): ?array
     {
@@ -75,13 +74,25 @@ class Sites extends SitesContract
      * @link https://developers.webflow.com/data/v2.0.0/reference/sites/publish
      *
      * @param string $siteId The site ID
-     * @return array|null
+     * @param array $customDomains The custom domains to publish
+     * @param string|null $pageId The page ID to publish
+     * @param bool $publishToWebflowSubdomain Whether to publish to the Webflow subdomain
      */
-    public function publishSite(string $siteId): ?array
+    public function publishSite(string $siteId, array $customDomains, ?string $pageId = null, bool $publishToWebflowSubdomain = false): ?array
     {
+        $payload = [
+            'customDomains' => $customDomains,
+            'publishToWebflowSubdomain' => $publishToWebflowSubdomain,
+        ];
+
+        if ($pageId) {
+            $payload['pageId'] = $pageId;
+        }
+
         return $this->sendRequest(
             method: 'POST',
             uri: 'sites/' . $siteId . '/publish',
+            body: $payload,
         );
     }
 }

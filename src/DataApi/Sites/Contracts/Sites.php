@@ -40,7 +40,6 @@ abstract class Sites extends Api
      * Get a list of all custom domains related to site.
      *
      * @param string $siteId The site ID
-     * @return array|null
      */
     abstract public function getCustomDomains(string $siteId): ?array;
 
@@ -49,7 +48,9 @@ abstract class Sites extends Api
      * If multiple individual pages are published to staging, publishing from staging to production publishes all staged changes.
      *
      * @param string $siteId The site ID
-     * @return array|null
+     * @param array $customDomains The custom domains to publish
+     * @param string|null $pageId The page ID to publish
+     * @param bool $publishToWebflowSubdomain Whether to publish to the Webflow subdomain
      */
-    abstract public function publishSite(string $siteId): ?array;
+    abstract public function publishSite(string $siteId, array $customDomains, ?string $pageId = null, bool $publishToWebflowSubdomain = false): ?array;
 }
