@@ -11,7 +11,7 @@ use ArielMagbanua\PhpWebflowApi\DataApi\Api;
  *
  * @package ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts
  */
-abstract class Collection extends Api
+abstract class Items extends Api
 {
     /**
      * The resource type. Can be 'live' or ''

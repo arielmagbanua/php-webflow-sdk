@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts;
 
-use ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts\Collection as WebflowCollection;
+use ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts\Items;
 
 /**
  * The Staged Items contract for the Webflow API
  *
  * @package ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts
  */
-abstract class StagedItems extends WebflowCollection
+abstract class StagedItems extends Items
 {
     /**
      * List of all Items within a Collection.
