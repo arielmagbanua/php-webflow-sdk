@@ -6,13 +6,13 @@ PHP SDK for the Webflow Data API
 
 # Authentication
 
-If you are not using a workspace or site token, you can use the [OAuth](src/Auth/OAuth.php) class to retrieve an access token.
+If you are not using a workspace or site token, you can use the [OAuth](src/DataApi/Versions/V2/Authentication/OAuth.php) class to retrieve an access token.
 
 ```php
 // include the vendor autoload
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use ArielMagbanua\PhpWebflowApi\Auth\OAuth;
+use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Authentication\OAuth;
 use Dotenv\Dotenv;
 
 // load environment variable if API credentials were configured in the environment
@@ -60,18 +60,18 @@ Once you secure your access token via OAuth or if you have already workspace or 
 // include the vendor autoload
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use ArielMagbanua\PhpWebflowApi\Versions\V2\CollectionItems\LiveCollection;
-use ArielMagbanua\PhpWebflowApi\Versions\V2\CollectionItems\StagedCollection;
-use ArielMagbanua\PhpWebflowApi\Versions\V2\Authorization\Token;
+use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Cms\CollectionItems\LiveItems;
+use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Cms\CollectionItems\StagedItems;
+use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\TokenInfo;
 
 // retrieved via OAuth or this can be a provided workspace or site access token
 $accessToken = 'access_token';
 
-$liveCollection = new LiveCollection(
+$liveItems = new LiveItems(
     accessToken: $accessToken,
     collectionId: 'live_collection_id' // use the correct collection id from CMS
 );
-$stagedCollection = new StagedCollection(
+$stagedItems = new StagedItems(
     accessToken: $accessToken,
     collectionId: 'staged_collection_id'
 );
@@ -80,14 +80,14 @@ $tokenInfo = new Token(
 );
 
 // information about the Authorized User
-$tokenInfo->getUserInfo();
+$tokenInfo->getAuthorizationUserInfo();
 
 // information about the authorization token
-$tokenInfo->getInfo();
+$tokenInfo->getAuthorizationInfo();
 
 // retrieve live collection items
-$liveItems = $liveCollection->listItems();
+$liveItems = $liveItems->listItems();
 
 // retrieve staged collection items
-$stagedItems = $stagedCollection->listItems();
+$stagedItems = $stagedItems->listItems();
 ```
