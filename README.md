@@ -1,4 +1,6 @@
 ![Tests / Lint](https://github.com/arielmagbanua/php-webflow-api/actions/workflows/tests.yml/badge.svg)
+[![Packagist Version](https://img.shields.io/packagist/v/arielmagbanua/php-webflow-sdk)](https://packagist.org/packages/arielmagbanua/php-webflow-sdk)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/arielmagbanua/php-webflow-sdk?label=packagist%20downloads)](https://packagist.org/packages/arielmagbanua/php-webflow-sdk)
 
 # PHP Webflow SDK
 
