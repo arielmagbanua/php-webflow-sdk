@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\CollectionItems;
+namespace ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Cms\CollectionItems;
 
-use ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts\LiveItems as LiveItemsContract;
+use ArielMagbanua\PhpWebflowApi\DataApi\Cms\CollectionItems\Contracts\StagedItems as StagedItemsContract;
 
 /**
- * The Live Collection class for the Webflow API
+ * The Staged Collection class for the Webflow API
  *
  * @package ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\CollectionItems
  * @todo create unit tests for this class
  */
-class LiveItems extends LiveItemsContract
+class StagedItems extends StagedItemsContract
 {
     /**
-     * The Live Collection constructor
+     * The Staged Collection constructor
      *
      * @param string $accessToken The access token
      * @param string $collectionId The collection ID
@@ -27,9 +27,9 @@ class LiveItems extends LiveItemsContract
     }
 
     /**
-     * List all published items in a collection.
+     * List of all Items within a Collection.
      *
-     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/live-items/list-items-live
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/staged-items/list-items
      *
      * @param string|null $cmsLocaleId The CMS locale ID
      * @param int|null $offset The offset
@@ -78,11 +78,11 @@ class LiveItems extends LiveItemsContract
     }
 
     /**
-     * Get details of a selected Collection live Item.
+     * Get details of a selected Collection Item.
      *
-     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/live-items/get-item-live
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/staged-items/get-item
      *
-     * @param string $id The ID of the live item
+     * @param string $id The ID of the item
      * @param string|null $cmsLocaleId The CMS locale ID
      */
     public function getItem(string $id, ?string $cmsLocaleId = null): ?array
@@ -104,9 +104,9 @@ class LiveItems extends LiveItemsContract
     }
 
     /**
-     * Get a live item by slug.
+     * Get an item by slug
      *
-     * @param string $slug The slug of the live item
+     * @param string $slug The slug of the item
      * @param string|null $cmsLocaleId The CMS locale ID
      */
     public function getItemBySlug(string $slug, ?string $cmsLocaleId = null): ?array
@@ -130,9 +130,9 @@ class LiveItems extends LiveItemsContract
     }
 
     /**
-     * Create item(s) in a collection that will be immediately published to the live site.
+     * Create an item or multiple items in a CMS Collection across multiple corresponding locales.
      *
-     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/live-items/create-item-live
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/staged-items/create-items
      *
      * @param array $items The items to create
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
@@ -140,7 +140,7 @@ class LiveItems extends LiveItemsContract
     public function createItems(array $items, ?bool $skipInvalidFiles = null): ?array
     {
         // create the uri for the request
-        $uri = 'collections/' . $this->collectionId . '/items/' . $this->type;
+        $uri = 'collections/' . $this->collectionId . '/items/' . $this->type . '/bulk';
 
         // append the arguments as query parameters
         // but only set the parameters that are not null
@@ -159,9 +159,9 @@ class LiveItems extends LiveItemsContract
     }
 
     /**
-     * Update a single published item or multiple published items (up to 100) in a Collection.
+     *  Update a single item or multiple items in a Collection.
      *
-     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/live-items/update-items-live
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/staged-items/update-items
      *
      * @param array $items The items to update
      * @param bool|null $skipInvalidFiles Whether to skip invalid files
@@ -188,9 +188,9 @@ class LiveItems extends LiveItemsContract
     }
 
     /**
-     * Unpublish up to 100 items from the live site and set the isDraft property to true.
+     * Delete Items from a Collection.
      *
-     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/live-items/delete-items-live
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/staged-items/delete-items
      *
      * Example $items structure:
      * ```php
@@ -201,9 +201,9 @@ class LiveItems extends LiveItemsContract
      *      ]
      * ]
      * ```
-     * @param array $items The items to unpublish
+     * @param array $items The items to delete
      */
-    public function unpublishItems(array $items): ?array
+    public function deleteItems(array $items): ?array
     {
         // create the uri for the request
         $uri = 'collections/' . $this->collectionId . '/items/' . $this->type;
@@ -214,6 +214,32 @@ class LiveItems extends LiveItemsContract
             uri: $uri,
             body: [
                 'items' => $items,
+            ],
+        );
+    }
+
+    /**
+     * Publish an item or multiple items.
+     *
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-items/staged-items/publish-item
+     *
+     * Example $ids structure:
+     * ```php
+     * $ids = ['580e64008c9a982ac9b8b754', '580e64008c9a982ac9b8b755'];
+     * ```
+     * @param array $ids The IDs of the items to publish
+     */
+    public function publishItemIds(array $ids): ?array
+    {
+        // create the uri for the request
+        $uri = 'collections/' . $this->collectionId . '/items/publish';
+
+        // send the request
+        return $this->sendRequest(
+            method: 'POST',
+            uri: $uri,
+            body: [
+                'items' => $ids,
             ],
         );
     }
