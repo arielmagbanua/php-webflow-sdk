@@ -38,7 +38,7 @@ class Fields extends CollectionFields
      * @param string $collectionId Unique identifier for a Collection
      * @param array $field This can be static field, option field, or reference field
      */
-    public function createField(string $collectionId, array $field)
+    public function createField(string $collectionId, array $field): ?array
     {
         return $this->sendRequest('POST', "collections/{$collectionId}/fields", $field);
     }

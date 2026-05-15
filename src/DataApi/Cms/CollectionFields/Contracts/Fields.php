@@ -38,5 +38,5 @@ abstract class Fields extends Api
      * @param string $collectionId Unique identifier for a Collection
      * @param array $field This can be static field, option field, or reference field
      */
-    abstract public function createField(string $collectionId, array $field);
+    abstract public function createField(string $collectionId, array $field): ?array;
 }
