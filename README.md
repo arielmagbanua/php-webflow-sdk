@@ -1,6 +1,7 @@
 ![Tests / Lint](https://github.com/arielmagbanua/webflow-php-sdk/actions/workflows/tests.yml/badge.svg)
 [![Packagist Version](https://img.shields.io/packagist/v/arielmagbanua/webflow-php-sdk)](https://packagist.org/packages/arielmagbanua/webflow-php-sdk)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/arielmagbanua/webflow-php-sdk?label=packagist%20downloads)](https://packagist.org/packages/arielmagbanua/webflow-php-sdk)
+[![Packagist Stars](https://img.shields.io/packagist/stars/arielmagbanua/webflow-php-sdk)](https://packagist.org/packages/arielmagbanua/webflow-php-sdk)
 
 # PHP Webflow SDK
 
@@ -64,7 +65,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Cms\CollectionItems\LiveItems;
 use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Cms\CollectionItems\StagedItems;
-use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\TokenInfo;
+use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Token\Info;
 
 // retrieved via OAuth or this can be a provided workspace or site access token
 $accessToken = 'access_token';
@@ -77,7 +78,7 @@ $stagedItems = new StagedItems(
     accessToken: $accessToken,
     collectionId: 'staged_collection_id'
 );
-$tokenInfo = new Token(
+$tokenInfo = new Info(
     accessToken: $accessToken
 );
 
