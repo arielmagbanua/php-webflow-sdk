@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\Tests\Unit\Versions\V2;
+namespace ArielMagbanua\PhpWebflowApi\Tests\Unit\Versions\V2\Token;
 
-use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\TokenInfo;
+use ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Token\Info as TokenInfo;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -19,7 +19,7 @@ class TokenInfoTest extends TestCase
     public function testGetUserInfo(): void
     {
         // Load the payload
-        $payloadPath = __DIR__ . '/../../../payloads/V2/Authorization/getUserInfoResponsePayload.json';
+        $payloadPath = __DIR__ . '/../../../../payloads/V2/Authorization/getUserInfoResponsePayload.json';
         $payload = json_decode(file_get_contents($payloadPath), true);
 
         // Mock the Guzzle client
@@ -44,7 +44,7 @@ class TokenInfoTest extends TestCase
     public function testGetInfo(): void
     {
         // Load the payload
-        $payloadPath = __DIR__ . '/../../../payloads/V2/Authorization/getInfoResponsePayload.json';
+        $payloadPath = __DIR__ . '/../../../../payloads/V2/Authorization/getInfoResponsePayload.json';
         $payload = json_decode(file_get_contents($payloadPath), true);
 
         // Mock the Guzzle client
