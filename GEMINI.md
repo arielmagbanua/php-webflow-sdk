@@ -1,47 +1,46 @@
-# PHP Webflow SDK - Project Instructions
+# PHP Webflow SDK
 
-This project is a PHP SDK for the Webflow Data API, designed to provide a structured and type-safe way to interact with Webflow's resources.
+PHP SDK for the Webflow Data API (V2), designed for ease of use and extensibility.
 
 ## Project Overview
 
-- **Language:** PHP 8.1+
-- **HTTP Client:** GuzzleHttp ^7.10
-- **Architecture:** The SDK uses an inheritance-based structure to share logic across different API versions and resource types.
-    - `BaseApi`: Abstract base class handling the Guzzle client and basic request sending.
-    - `Api`: Extends `BaseApi` to handle access tokens and API versioning.
-    - `Items`: Extends `Api` to handle collection-specific resources.
-    - `Contracts/`: Contains abstract classes defining the interface for various resources.
-    - `Versions/V2/`: Contains concrete implementations for the Webflow Data API V2.
+- **Purpose:** Provide a PHP wrapper for interacting with Webflow's Data API.
+- **Technologies:** 
+  - PHP >= 8.1
+  - [GuzzleHttp](https://docs.guzzlephp.org/en/stable/) for HTTP requests.
+  - [PHPUnit](https://phpunit.de/) for testing.
+  - [PHP-CS-Fixer](https://cs.symfony.com/) for coding standards.
+  - [PHPStan](https://phpstan.org/) for static analysis.
+
+## Architecture
+
+The SDK follows a layered approach to support multiple API versions and resources:
+
+1. **`BaseApi`**: The root abstract class that initializes the Guzzle client and provides a generic `sendRequest` method.
+2. **`DataApi\Api`**: Extends `BaseApi` to handle common Data API requirements like access tokens and API versioning.
+3. **Contracts**: Located in `src/DataApi/{Resource}/Contracts/`, these abstract classes define the expected methods for a specific Webflow resource (e.g., `Sites`, `Collections`, `CollectionItems`).
+4. **Versions**: Located in `src/DataApi/Versions/V2/`, these concrete classes implement the contracts for a specific API version.
+5. **Authentication**: `OAuth.php` handles the OAuth 2.0 flow to retrieve access tokens.
 
 ## Building and Running
 
-### Prerequisites
-- PHP 8.1 or higher
-- Composer
-
 ### Key Commands
-- `composer install`: Install project dependencies.
-- `composer test`: Run the test suite using PHPUnit.
-- `composer check`: Run PHP-CS-Fixer in dry-run mode to check for coding style violations.
-- `composer format`: Run PHP-CS-Fixer to automatically fix coding style issues.
-- `composer phpstan`: Run PHPStan static analysis (currently at level 5).
-- `make test`: Runs `check`, `phpstan`, and `test` sequentially.
+
+- **Install Dependencies:** `composer install`
+- **Run Tests:** `composer test` or `make test` (the latter also runs linting and static analysis)
+- **Code Linting (Check):** `composer check`
+- **Auto-format Code:** `composer format` or `make clean`
+- **Static Analysis:** `composer phpstan`
 
 ## Development Conventions
 
-### Coding Style
-- **Strict Types:** Always include `declare(strict_types=1);` at the top of PHP files.
-- **Namespacing:** Follow PSR-4 conventions under the `ArielMagbanua\PhpWebflowApi` namespace.
-- **Modern PHP:** Utilize PHP 8.1+ features such as constructor property promotion and named arguments.
-- **Documentation:** Use PHPDoc blocks for classes and methods, including `@param`, `@return`, and `@link` to official Webflow API documentation.
-
-### Testing Practices
-- **PHPUnit:** All new features or bug fixes must include unit tests.
-- **Mocking:** Use Guzzle's `MockHandler` and `History` middleware to test API interactions without making real network requests.
-- **Payloads:** Store sample request and response payloads in `tests/payloads/` to keep test files clean and reusable.
-- **Test Structure:** Unit tests should mirror the source directory structure under `tests/Unit/`.
-
-### Contribution Guidelines
-- Ensure all tests pass before submitting changes.
-- Run `composer format` to maintain consistent coding style.
-- Maintain or improve the PHPStan analysis level when possible.
+- **Strict Typing:** All PHP files MUST include `declare(strict_types=1);`.
+- **PSR-4 Autoloading:** Follow the PSR-4 namespace conventions as defined in `composer.json`.
+- **Modern PHP:** Leverage PHP 8.1+ features such as constructor property promotion and typed properties.
+- **Resource Implementation:** When adding support for a new resource:
+  1. Define an abstract contract in `src/DataApi/{Resource}/Contracts/`.
+  2. Implement the concrete class in `src/DataApi/Versions/V2/`.
+- **Testing:** 
+  - All new features or bug fixes MUST include corresponding unit tests in the `tests/Unit` directory.
+  - Use JSON payloads in `tests/payloads` for mocking API responses.
+- **Coding Style:** Adhere to the rules defined in `.php-cs-fixer.dist.php`. Run `composer format` before committing.
