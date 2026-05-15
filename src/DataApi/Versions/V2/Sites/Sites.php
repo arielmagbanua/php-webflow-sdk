@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2;
+namespace ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Sites;
 
 use ArielMagbanua\PhpWebflowApi\DataApi\Sites\Contracts\Sites as SitesContract;
 
 /**
  * The Sites class for the Webflow API
  *
- * @package ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2
+ * @package ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Sites
  * @todo Create a test for this class
  */
 class Sites extends SitesContract
