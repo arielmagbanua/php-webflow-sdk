@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2;
+namespace ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Token;
 
 use ArielMagbanua\PhpWebflowApi\DataApi\Api;
 
 /**
  * The Token class for retrieving Authorization information.
  *
- * @package ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2
+ * @package ArielMagbanua\PhpWebflowApi\DataApi\Versions\V2\Token
  */
-class TokenInfo extends Api
+class Info extends Api
 {
     /**
      * The Token constructor
