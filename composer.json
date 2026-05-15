@@ -1,13 +1,15 @@
 {
-  "name": "arielmagbanua/php-webflow-sdk",
+  "name": "arielmagbanua/webflow-php-sdk",
   "description": "PHP SDK for the Webflow Data API",
   "keywords": [
     "webflow",
     "api",
     "sdk",
-    "php"
+    "php",
+    "data-api",
+    "cms"
   ],
-  "homepage": "https://github.com/arielmagbanua/php-webflow-api",
+  "homepage": "https://github.com/arielmagbanua/webflow-php-sdk",
   "require": {
     "php": ">=8.1",
     "guzzlehttp/guzzle": "^7.10"
