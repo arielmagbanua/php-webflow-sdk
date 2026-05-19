@@ -39,4 +39,13 @@ abstract class Fields extends Api
      * @param array $field This can be static field, option field, or reference field
      */
     abstract public function createField(string $collectionId, array $field): ?array;
+
+    /**
+     * Update a custom field in a collection.
+     *
+     * @param string $collectionId Unique identifier for a Collection
+     * @param string $fieldId Unique identifier for a Field in a collection
+     * @param array $field The updated field data
+     */
+    abstract public function updateField(string $collectionId, string $fieldId, array $field): ?array;
 }

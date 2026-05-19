@@ -42,4 +42,18 @@ class Fields extends CollectionFields
     {
         return $this->sendRequest('POST', "collections/{$collectionId}/fields", $field);
     }
+
+    /**
+     * Update a custom field in a collection.
+     *
+     * @link https://developers.webflow.com/data/v2.0.0/reference/cms/collection-fields/update
+     *
+     * @param string $collectionId Unique identifier for a Collection
+     * @param string $fieldId Unique identifier for a Field in a collection
+     * @param array $field The updated field data
+     */
+    public function updateField(string $collectionId, string $fieldId, array $field): ?array
+    {
+        return $this->sendRequest('PATCH', "collections/{$collectionId}/fields/{$fieldId}", $field);
+    }
 }
